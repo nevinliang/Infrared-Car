@@ -4,7 +4,7 @@ uint16_t sen[8];
 const int lNP=31, lDP=29, lPP=40, rNP=11, rDP=30, rPP=39, LED=41;
 const int of[8]={598, 691, 644, 529, 574, 667, 667, 667};
 const int wt[8]={8, 4, 2, 1, -1, -2, -4, -8};
-int sp=85, lE, rE;
+int sp=110, lE, rE;
 bool t=0;
 
 ///////////////////////////////////
@@ -68,8 +68,8 @@ void loop() {
             c++;
             tot+=er;
             avg=tot/c;
-            lE=avg+200;
-            rE=avg-200;
+            lE=avg+150;
+            rE=avg-150;
         }
         else {
             lE=300;
@@ -77,7 +77,7 @@ void loop() {
         }
     }
     
-    if(er<rE)       wpin(-(rE-er>>4),rE-er>>6,1);
-    else if(er>lE)  wpin(er-lE>>6,-(er-lE>>4),1);
+    if(er<rE)       wpin(-(rE-er>>4),rE-er>>5,1);
+    else if(er>lE)  wpin(er-lE>>5,-(er-lE>>4),1);
     else            wpin(0,0,1);
 }
